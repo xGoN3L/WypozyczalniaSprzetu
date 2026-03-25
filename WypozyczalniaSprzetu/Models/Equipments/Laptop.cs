@@ -16,5 +16,12 @@ namespace WypozyczalniaSprzetu.Models.Equipments
         public Laptop(string name) : base(name)
         {
         }
+        public Laptop(string name, string screenSize, string processor, bool hasDedicatedGraphicsCard, string graphicsCardModel, int ram) : base(name)
+        {
+            Processor = processor;
+            HasDedicatedGraphicsCard = hasDedicatedGraphicsCard;
+            GraphicsCardModel = graphicsCardModel;
+            RAM = ram;
+        }
     }
 }

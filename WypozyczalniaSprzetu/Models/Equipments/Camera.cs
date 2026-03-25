@@ -16,5 +16,12 @@ namespace WypozyczalniaSprzetu.Models.Equipments
         {
             
         }
+
+        public Camera(string name, string resolution, string opticalZoom, bool wiFi, bool touchScreen) : base(name)
+        {
+            OpticalZoom = opticalZoom;
+            WiFi = wiFi;
+            TouchScreen = touchScreen;
+        }
     }
 }
