@@ -17,6 +17,11 @@ namespace WypozyczalniaSprzetu.Models.Equipments
         {
             Id = _nextId++;
             Name = name;
+            Status = EquipmentStatus.Available;
+        }
+        public override string ToString()
+        {
+            return $"Nazwa: {Name}, Status: {Status.ToString()}";
         }
     }
 }
