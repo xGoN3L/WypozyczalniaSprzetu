@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WypozyczalniaSprzetu.Data;
 using WypozyczalniaSprzetu.Models.Equipments;
 using WypozyczalniaSprzetu.Models.Rentals;
 
@@ -13,11 +14,11 @@ namespace WypozyczalniaSprzetu.Services
         private readonly InMemoryStore _store;
         private readonly BorrowingPolicy _borrowingPolicy;
         private readonly PenaltyCalculator _penaltyCalculator;
-        public RentalService(InMemoryStore store, BorrowingPolicy borrowingPolicy, PenaltyCalculator penaltyCalculator)
+        public RentalService(InMemoryStore store)
         {
             _store = store;
-            _borrowingPolicy = borrowingPolicy;
-            _penaltyCalculator = penaltyCalculator;
+            _borrowingPolicy = new BorrowingPolicy();
+            _penaltyCalculator = new PenaltyCalculator();
         }
         public void RentEquipment(int userId, int equipmentId, decimal rentPrice)
         {
