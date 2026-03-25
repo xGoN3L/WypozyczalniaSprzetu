@@ -10,13 +10,13 @@ namespace WypozyczalniaSprzetu.Services
     {
         private const decimal DailyPenaltyRate = 5.0m;
 
-        public decimal CalculatePenalty(DateTime rentReturnDate)
+        public decimal CalculatePenalty(DateTime rentReturnEndDate, DateTime rentReturnDate)
         {
-            if (DateTime.Now <= rentReturnDate)
+            if (rentReturnDate <= rentReturnEndDate)
             {
                 return 0;
             }
-            int daysLate = (DateTime.Now - rentReturnDate).Days;
+            int daysLate = (rentReturnDate - rentReturnEndDate).Days;
             return daysLate * DailyPenaltyRate;
         }
     }
