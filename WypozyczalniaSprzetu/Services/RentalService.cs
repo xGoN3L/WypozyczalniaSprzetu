@@ -20,7 +20,7 @@ namespace WypozyczalniaSprzetu.Services
             _borrowingPolicy = new BorrowingPolicy();
             _penaltyCalculator = new PenaltyCalculator();
         }
-        public void RentEquipment(int userId, int equipmentId, decimal rentPrice)
+        public void RentEquipment(int userId, int equipmentId, DateTime rentReturnEndDate, decimal rentPrice)
         {
             var user = _store.Users.FirstOrDefault(u => u.Id == userId);
             var equipment = _store.Equipments.FirstOrDefault(e => e.Id == equipmentId);
@@ -31,7 +31,17 @@ namespace WypozyczalniaSprzetu.Services
             int activeRentals = _store.Rentals.Count(r => r.UserId == userId && r.ReturnDate == null);
             if (activeRentals >= _borrowingPolicy.GetMaxActiveRentals(user))
             {
-                throw new Exception("Użytkownik osiągnął limit wypożyczeń");
+                Console.WriteLine("Użytkownik osiągnął limit wypożyczeń");
+                return;
+            }
+            if(equipment.Status == EquipmentStatus.Unvailable)
+            {
+                Console.WriteLine("Sprzęt jest niedostępny");
+                return;
+            }
+            _store.Rentals.Add(new Rental(user, equipment, DateTime.Now, rentReturnEndDate, rentPrice));
+            equipment.Status = EquipmentStatus.Borrowed;
+        }
             }
             _store.Rentals.Add(new Rental(user, equipment, DateTime.Now, rentPrice));
             equipment.Status = EquipmentStatus.Rented;
