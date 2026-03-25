@@ -36,7 +36,8 @@ namespace WypozyczalniaSprzetu.Services
             var equipment = _store.Equipments.FirstOrDefault(e => e.Id == equipmentId);
             if (equipment == null)
             {
-                throw new Exception("Sprzęt nie został znaleziony");
+                Console.WriteLine("Sprzęt nie został znaleziony"); 
+                return;
             }
             equipment.Status = EquipmentStatus.Unvailable;
         }
