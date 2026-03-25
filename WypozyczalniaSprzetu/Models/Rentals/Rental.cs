@@ -15,17 +15,23 @@ namespace WypozyczalniaSprzetu.Models.Rentals
         public User Borrower { get; set; }
         public Equipment EquipmentRented { get; set; }
         public DateTime RentDateStart { get; set; }
+        public DateTime RentReturnEndDate { get; set; }
         public DateTime? RentReturnDate { get; set; }
         public bool IsReturnedInTime => DateTime.Now <= RentReturnDate;
         public decimal RentPrice { get; set; }
         public decimal? RentFine { get; set; }
-        public Rental(User borrower, Equipment equipment, DateTime rentDateStart, decimal rentPrice)
+        public Rental(User borrower, Equipment equipment, DateTime rentDateStart, DateTime rentReturnEndDate, decimal rentPrice)
         {
             Id = _nextId++;
             Borrower = borrower;
             EquipmentRented = equipment;
             RentDateStart = rentDateStart;
+            RentReturnEndDate = rentReturnEndDate;
             RentPrice = rentPrice;
+        }
+        public override string ToString()
+        {
+            return $"Id: {Id}, Sprzęt: {EquipmentRented.Name}, Data wypożyczenia: {RentDateStart.ToShortDateString()}, Umówiony termin zwrotu: {RentReturnEndDate.ToShortDateString()}, Cena: {RentPrice} zł";
         }
     }
 }
