@@ -15,5 +15,12 @@ namespace WypozyczalniaSprzetu.Models.Equipments
         public Projector(string name) : base(name)
         {
         }
+
+        public Projector(string name, string resolution, int lumens, bool hasHDMI, bool hasVGA) : this(name)
+        {
+            Lumens = lumens;
+            HasHDMI = hasHDMI;
+            HasVGA = hasVGA;
+        }
     }
 }
