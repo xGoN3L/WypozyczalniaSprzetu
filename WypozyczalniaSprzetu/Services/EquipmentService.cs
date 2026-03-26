@@ -39,7 +39,7 @@ namespace WypozyczalniaSprzetu.Services
                 Console.WriteLine("Sprzęt nie został znaleziony\n"); 
                 return;
             }
-            equipment.Status = EquipmentStatus.Unvailable;
+            equipment.Status = EquipmentStatus.Unavailable;
         }
     }
 }

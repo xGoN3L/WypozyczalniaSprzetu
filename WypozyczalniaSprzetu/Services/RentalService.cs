@@ -35,7 +35,7 @@ namespace WypozyczalniaSprzetu.Services
                 Console.WriteLine("Użytkownik osiągnął limit wypożyczeń\n");
                 return;
             }
-            if(equipment.Status == EquipmentStatus.Unvailable)
+            if(equipment.Status == EquipmentStatus.Unavailable)
             {
                 Console.WriteLine("Sprzęt jest niedostępny\n");
                 return;
@@ -44,7 +44,7 @@ namespace WypozyczalniaSprzetu.Services
             Console.WriteLine($"Sprzęt: {equipment.Name} został wypożyczony przez {user.FirstName} {user.LastName}\n");
             equipment.Status = EquipmentStatus.Borrowed;
         }
-        public Rental GetRentalForEquipment(int equipmentId)
+        public Rental? GetRentalForEquipment(int equipmentId)
         {
             var rental = _store.Rentals.FirstOrDefault(r => r.EquipmentRented.Id == equipmentId && r.RentReturnDate == null);
             if (rental == null)

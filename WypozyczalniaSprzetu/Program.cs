@@ -28,12 +28,12 @@ namespace WypozyczalniaSprzetu
             equipmentService.AddEquipment(projector);
             equipmentService.AddEquipment(secondProjector);
 
-            var user1 = new User("Jan", "Kowalski", UserType.Student);
-            var user2 = new User("Anna", "Nowak", UserType.Employee);
-            var user3 = new User("Piotr", "Zieliński", UserType.Student);
-            var user4 = new User("Ewa", "Wiśniewska", UserType.Employee);
-            var user5 = new User("Marek", "Kowalczyk", UserType.Student);
-            var user6 = new User("Katarzyna", "Lewandowska", UserType.Employee);
+            var user1 = new Student("Jan", "Kowalski");
+            var user2 = new Employee("Anna", "Nowak");
+            var user3 = new Student("Piotr", "Zieliński");
+            var user4 = new Employee("Ewa", "Wiśniewska");
+            var user5 = new Student("Marek", "Kowalczyk");
+            var user6 = new Employee("Katarzyna", "Lewandowska");
 
             userService.AddUser(user1);
             userService.AddUser(user2);
