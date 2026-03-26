@@ -14,6 +14,6 @@ namespace WypozyczalniaSprzetu.Models.Equipments
         [Description("Wypożyczony")]
         Borrowed = 1,
         [Description("Niedostępny")]
-        Unvailable = 2
+        Unavailable = 2
     }
 }
