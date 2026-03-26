@@ -23,20 +23,20 @@ namespace WypozyczalniaSprzetu.Services
         {
             Console.WriteLine("Cały sprzęt: ");
             _store.Equipments.ForEach(x => Console.WriteLine(x));
-            Console.WriteLine("_______________");
+            Console.WriteLine("_______________\n");
         }
         public void ShowAvailableEquipment()
         {
             Console.WriteLine("Dostępny sprzęt do wypożyczenia: ");
             _store.Equipments.Where(x => x.Status == EquipmentStatus.Available).ToList().ForEach(x => Console.WriteLine(x));
-            Console.WriteLine("_______________");
+            Console.WriteLine("_______________\n");
         }
         public void SetEquipmentAsUnavailable(int equipmentId)
         {
             var equipment = _store.Equipments.FirstOrDefault(e => e.Id == equipmentId);
             if (equipment == null)
             {
-                Console.WriteLine("Sprzęt nie został znaleziony"); 
+                Console.WriteLine("Sprzęt nie został znaleziony\n"); 
                 return;
             }
             equipment.Status = EquipmentStatus.Unvailable;

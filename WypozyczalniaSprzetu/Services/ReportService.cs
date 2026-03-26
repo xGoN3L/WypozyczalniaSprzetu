@@ -28,7 +28,7 @@ namespace WypozyczalniaSprzetu.Services
             int totalStudentUsers = _store.Users.Count(x => x.UserType == UserType.Student);
             int totalEmployeeUsers = _store.Users.Count(x => x.UserType == UserType.Employee);
 
-            Console.WriteLine("Report:");
+            Console.WriteLine("Raport:");
             Console.WriteLine($"Wszystkie wypożyczenia: {totalRentals}");
             Console.WriteLine($"Wszystkie zwrócone wypożyczenia: {totalReturnedRentals}");
             Console.WriteLine($"Wszystkie niezwrócone wypożyczenia: {totalNotReturnedRentals}");
@@ -38,7 +38,7 @@ namespace WypozyczalniaSprzetu.Services
             Console.WriteLine($"Liczba niedostępnego sprzętu: {totalUnavailableEquipment}");
             Console.WriteLine($"Liczba użytkowników typu student: {totalStudentUsers}");
             Console.WriteLine($"Liczba użytkowników typu pracownik: {totalEmployeeUsers}");
-            Console.WriteLine($"");
+            Console.WriteLine($"\n");
         }
     }
 }
