@@ -47,12 +47,19 @@ namespace WypozyczalniaSprzetu
             rentalService.RentEquipment(user1.Id, projector.Id, DateTime.Now.AddDays(5), 200);
             rentalService.RentEquipment(user1.Id, laptop2.Id, DateTime.Now.AddDays(10), 150);
 
-            rentalService.ReturnEquipment(rentalService.GetRentalForEquipment(projector.Id).Id);
+            var rentalToReturn = rentalService.GetRentalForEquipment(projector.Id);
+            if(rentalToReturn != null)
+            {
+                rentalService.ReturnEquipment(rentalToReturn.Id);
+            }
 
             var rental = rentalService.GetRentalForEquipment(laptop.Id);
-            rental.RentReturnEndDate = DateTime.Now.AddDays(-1);
+            if (rental != null)
+            {
+                rental.RentReturnEndDate = DateTime.Now.AddDays(-1);
 
-            rentalService.ReturnEquipment(rentalService.GetRentalForEquipment(laptop.Id).Id);
+                rentalService.ReturnEquipment(rental.Id);
+            }
 
             reportService.GenerateReport();
 
