@@ -21,6 +21,7 @@ namespace WypozyczalniaSprzetu.Models.Equipments
             Lumens = lumens;
             HasHDMI = hasHDMI;
             HasVGA = hasVGA;
+            Resolution = resolution;
         }
     }
 }
