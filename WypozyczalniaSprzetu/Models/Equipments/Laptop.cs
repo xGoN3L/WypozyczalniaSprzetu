@@ -22,6 +22,7 @@ namespace WypozyczalniaSprzetu.Models.Equipments
             HasDedicatedGraphicsCard = hasDedicatedGraphicsCard;
             GraphicsCardModel = graphicsCardModel;
             RAM = ram;
+            ScreenSize = screenSize;
         }
     }
 }

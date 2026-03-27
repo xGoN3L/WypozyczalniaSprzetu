@@ -23,10 +23,10 @@ namespace WypozyczalniaSprzetu.Services
             int totalNotReturnedRentals = totalRentals - totalReturnedRentals;
             int totalEquipment = _store.Equipments.Count;
             int totalAvailableEquipment = _store.Equipments.Count(x => x.Status == EquipmentStatus.Available);
-            int totalUnavailableEquipment = _store.Equipments.Count(x => x.Status == EquipmentStatus.Unvailable);
+            int totalUnavailableEquipment = _store.Equipments.Count(x => x.Status == EquipmentStatus.Unavailable);
             int totalBorrowedEquipment = _store.Equipments.Count(x => x.Status == EquipmentStatus.Borrowed);
-            int totalStudentUsers = _store.Users.Count(x => x.UserType == UserType.Student);
-            int totalEmployeeUsers = _store.Users.Count(x => x.UserType == UserType.Employee);
+            int totalStudentUsers = _store.Users.Count(x => x is Student);
+            int totalEmployeeUsers = _store.Users.Count(x => x is Employee);
 
             Console.WriteLine("Raport:");
             Console.WriteLine($"Wszystkie wypożyczenia: {totalRentals}");

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace WypozyczalniaSprzetu.Models.Users
 {
-    public enum UserType
+    public class Employee : User
     {
-        Student = 0,
-        Employee = 1
+        public Employee(string firstName, string lastName) : base(firstName, lastName)
+        {
+        }
     }
 }

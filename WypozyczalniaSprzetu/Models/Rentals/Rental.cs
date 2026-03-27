@@ -17,7 +17,7 @@ namespace WypozyczalniaSprzetu.Models.Rentals
         public DateTime RentDateStart { get; set; }
         public DateTime RentReturnEndDate { get; set; }
         public DateTime? RentReturnDate { get; set; }
-        public bool IsReturnedInTime => DateTime.Now <= RentReturnDate;
+        public bool IsReturnedInTime => RentReturnDate.HasValue && RentReturnDate.Value <= RentReturnEndDate;
         public decimal RentPrice { get; set; }
         public decimal? RentFine { get; set; }
         public Rental(User borrower, Equipment equipment, DateTime rentDateStart, DateTime rentReturnEndDate, decimal rentPrice)

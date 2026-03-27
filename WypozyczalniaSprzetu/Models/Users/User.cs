@@ -6,19 +6,17 @@ using System.Threading.Tasks;
 
 namespace WypozyczalniaSprzetu.Models.Users
 {
-    public class User
+    public abstract class User
     {
         private static int _nextId = 1;
         public int Id { get; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public UserType UserType { get; set; }
-        public User(string firstName, string lastName, UserType userType)
+        public User(string firstName, string lastName)
         {
             Id = _nextId++;
             FirstName = firstName;
             LastName = lastName;
-            UserType = userType;
         }
     }
 }

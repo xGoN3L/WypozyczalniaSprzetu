@@ -22,6 +22,7 @@ namespace WypozyczalniaSprzetu.Models.Equipments
             OpticalZoom = opticalZoom;
             WiFi = wiFi;
             TouchScreen = touchScreen;
+            Resolution = resolution;
         }
     }
 }

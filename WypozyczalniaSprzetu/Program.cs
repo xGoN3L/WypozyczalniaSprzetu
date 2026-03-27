@@ -28,12 +28,12 @@ namespace WypozyczalniaSprzetu
             equipmentService.AddEquipment(projector);
             equipmentService.AddEquipment(secondProjector);
 
-            var user1 = new User("Jan", "Kowalski", UserType.Student);
-            var user2 = new User("Anna", "Nowak", UserType.Employee);
-            var user3 = new User("Piotr", "Zieliński", UserType.Student);
-            var user4 = new User("Ewa", "Wiśniewska", UserType.Employee);
-            var user5 = new User("Marek", "Kowalczyk", UserType.Student);
-            var user6 = new User("Katarzyna", "Lewandowska", UserType.Employee);
+            var user1 = new Student("Jan", "Kowalski");
+            var user2 = new Employee("Anna", "Nowak");
+            var user3 = new Student("Piotr", "Zieliński");
+            var user4 = new Employee("Ewa", "Wiśniewska");
+            var user5 = new Student("Marek", "Kowalczyk");
+            var user6 = new Employee("Katarzyna", "Lewandowska");
 
             userService.AddUser(user1);
             userService.AddUser(user2);
@@ -47,12 +47,19 @@ namespace WypozyczalniaSprzetu
             rentalService.RentEquipment(user1.Id, projector.Id, DateTime.Now.AddDays(5), 200);
             rentalService.RentEquipment(user1.Id, laptop2.Id, DateTime.Now.AddDays(10), 150);
 
-            rentalService.ReturnEquipment(rentalService.GetRentalForEquipment(projector.Id).Id);
+            var rentalToReturn = rentalService.GetRentalForEquipment(projector.Id);
+            if(rentalToReturn != null)
+            {
+                rentalService.ReturnEquipment(rentalToReturn.Id);
+            }
 
             var rental = rentalService.GetRentalForEquipment(laptop.Id);
-            rental.RentReturnEndDate = DateTime.Now.AddDays(-1);
+            if (rental != null)
+            {
+                rental.RentReturnEndDate = DateTime.Now.AddDays(-1);
 
-            rentalService.ReturnEquipment(rentalService.GetRentalForEquipment(laptop.Id).Id);
+                rentalService.ReturnEquipment(rental.Id);
+            }
 
             reportService.GenerateReport();
 

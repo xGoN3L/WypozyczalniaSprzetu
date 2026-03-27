@@ -1,17 +1,20 @@
 ﻿using System;
 using WypozyczalniaSprzetu.Models.Users;
 
-public class BorrowingPolicy
+namespace WypozyczalniaSprzetu.Services
 {
-    public int GetMaxActiveRentals(User user)
+    public class BorrowingPolicy
     {
-        if (user.UserType == UserType.Student)
+        public int GetMaxActiveRentals(User user)
         {
-            return 2;
-        }
-        else
-        {
-            return 5;
+            if (user is Student)
+            {
+                return 2;
+            }
+            else
+            {
+                return 5;
+            }
         }
     }
 }
